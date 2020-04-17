@@ -12,6 +12,9 @@ public class Port {
         piers.add(new Pier("#1"));
         piers.add(new Pier("#2"));
 
+        System.out.println(String.format("this port have %d piers, and %d containers on the storage",
+                piers.size(), storage.getContainersOnTheStorage()));
+
     }
 
     public Queue<Pier> getPiers() {

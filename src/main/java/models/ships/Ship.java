@@ -8,6 +8,8 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static models.ships.ShipMission.*;
+
 
 public class Ship extends Thread {
     private Lock lock = new ReentrantLock();
@@ -42,18 +44,45 @@ public class Ship extends Thread {
     @Override
     public void run() {
         this.allPiers = port.getPiers();
-
-
         try {
-
+            checkDeadLock();
             semaphore.acquire();
             goToPier(allPiers);
-
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
             semaphore.release();
         }
+    }
+
+    void checkDeadLock() throws InterruptedException {
+        while (allPiers.size() == 2) {
+            if (shipMission == FOR_LOAD & notEnoughContainers()) {
+                sleep(1000);
+            } else {
+                break;
+            }
+        }
+        while (allPiers.size() == 2) {
+                    if (shipMission == FOR_UNLOAD & notEnoughFreeSpace()) {
+                sleep(1000);
+            } else {
+                break;
+            }
+
+        }
+    }
+
+    private boolean notEnoughFreeSpace() {
+        if (this.containersOnTheBoard + port.storage.getContainersOnTheStorage() >= port.storage.getMaxCapacity())
+            return true;
+        return false;
+    }
+
+    private boolean notEnoughContainers() {
+        if (port.storage.getContainersOnTheStorage() < this.shipClassifier.getCapacity())
+            return true;
+        return false;
     }
 
 
@@ -66,48 +95,65 @@ public class Ship extends Thread {
 
     private void doSmth() {
         lock.lock();
-        try {
-            if (this.shipMission == ShipMission.FOR_LOAD) {
-                loadShip();
-            } else unloadShip();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            sailAway(pier);
-            lock.unlock();
-        }
+        if (this.shipMission == FOR_LOAD) {
+            loadShip();
+        } else unloadShip();
+
+        sailAway(pier);
+        lock.unlock();
     }
 
-    private void unloadShip() throws InterruptedException {
-        System.out.println(this.getName() + " unloading containers....");
-        sleep(500);
+
+    private void unloadShip() {
+        System.out.println(this.getName() + " unloading " + containersOnTheBoard + " containers.....");
         while (!isEmpty()) {
-            if (port.storage.getContainersOnTheStorage() == port.storage.getMaxCapacity()) {
-                sleep(1000);
-            } else {
-                containersOnTheBoard--;
-                port.storage.loadStorage();
-            }
+            containersOnTheBoard--;
+            port.storage.loadStorage();
         }
-        System.out.println( this.getName() + " left the on storage " + port.storage.getContainersOnTheStorage() + " containers");
+
     }
 
-    private void loadShip() throws InterruptedException {
-        System.out.println(this.getName() + " loading containers....");
-        sleep(500);
+    private void loadShip() {
+        System.out.println(this.getName() + " start loading " + shipClassifier.getCapacity() + " containers.....");
         while (!isFullyLoaded()) {
-            if (port.storage.getContainersOnTheStorage() == 0) {
-                sleep(1000);
-            } else {
-                port.storage.unloadStorage();
-                containersOnTheBoard++;
-            }
+            port.storage.unloadStorage();
+            containersOnTheBoard++;
         }
-        System.out.println( this.getName() + " left the on storage " + port.storage.getContainersOnTheStorage() + " containers");
+
     }
+
+//    private void unloadShip() throws InterruptedException {
+//        System.out.println(this.getName() + " unloading containers....");
+//        sleep(500);
+//        while (!isEmpty()) {
+//            if (port.storage.getContainersOnTheStorage() == port.storage.getMaxCapacity()) {
+//                sleep(1000);
+//            } else {
+//                containersOnTheBoard--;
+//                port.storage.loadStorage();
+//            }
+//        }
+//        System.out.println(this.getName() + " left the on storage " + port.storage.getContainersOnTheStorage() + " containers");
+//    }
+//
+//    private void loadShip() throws InterruptedException {
+//        System.out.println(this.getName() + " loading containers....");
+//        sleep(500);
+//        while (!isFullyLoaded()) {
+//            if (port.storage.getContainersOnTheStorage() == 0) {
+//                sleep(1000);
+//            } else {
+//                port.storage.unloadStorage();
+//                containersOnTheBoard++;
+//            }
+//        }
+//        System.out.println(this.getName() + " left the on storage " + port.storage.getContainersOnTheStorage() + " containers");
+//    }
+
 
     private void sailAway(Pier pier) {
-        System.out.println(this.getName() + " sail away, freeing the pier " + pier.getPierId());
+        System.out.println(this.getName() + " sail away, freeing the pier " + pier.getPierId() +
+                " containers on storage = " + port.storage.getContainersOnTheStorage());
         allPiers.add(pier);
 
     }
