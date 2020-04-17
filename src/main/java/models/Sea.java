@@ -15,13 +15,13 @@ public class Sea {
 
     public Sea(Port Wilhelmshaven){
         Semaphore semaphore = new Semaphore(2, true);
-        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, Wilhelmshaven, semaphore));
-        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, Wilhelmshaven, semaphore));
-        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, Wilhelmshaven, semaphore));
-        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, Wilhelmshaven, semaphore));
-        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, Wilhelmshaven, semaphore));
 
-//        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 299, Wilhelmshaven, semaphore));
+        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 10, Wilhelmshaven, semaphore));
+        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 10, Wilhelmshaven, semaphore));
+        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, Wilhelmshaven, semaphore));
+//        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, Wilhelmshaven, semaphore));
+//        ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, Wilhelmshaven, semaphore));
+//        ships.add(new Ship(ShipClassifier.LARGE, ShipMission.FOR_UNLOAD, 20, Wilhelmshaven, semaphore));
 
     }
 

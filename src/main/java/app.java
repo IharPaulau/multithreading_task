@@ -17,9 +17,6 @@ public class app {
         for (Ship ship : northSea.ships) {
             ship.start();
         }
-
-
-
     }
 
 
