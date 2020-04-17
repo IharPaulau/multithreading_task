@@ -1,23 +1,25 @@
 package models.bay;
 
 public class Storage {
+    private  int maxCapacity = 100;
+    private  int containersOnTheStorage = 80;
 
     public Storage(){
-
-    }
-
-    private  int maxCapacity = 100;
-    private  int containersOnTheStorage = 50;
-
-    public int loadStorage(){
-        if(containersOnTheStorage>0)
-        return containersOnTheStorage-1;
-        return containersOnTheStorage;
     }
 
     public int unloadStorage(){
+        if(containersOnTheStorage>0)
+        return containersOnTheStorage--;
+        return containersOnTheStorage;
+    }
+
+    public int loadStorage(){
         if(maxCapacity>containersOnTheStorage)
-        return containersOnTheStorage+1;
+        return containersOnTheStorage++;
+        return containersOnTheStorage;
+    }
+
+    public int getContainersOnTheStorage() {
         return containersOnTheStorage;
     }
 }

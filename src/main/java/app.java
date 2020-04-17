@@ -10,18 +10,17 @@ public class app {
 
     public static void main(String[] args) {
 
-        Port Wilhelmshaven = new Port();
-        Sea northSea = new Sea(Wilhelmshaven);
+        Port wilhelmshaven = new Port();
+        Sea northSea = new Sea(wilhelmshaven);
 
 
-        for(Ship ship:northSea.ships){
+        for (Ship ship : northSea.ships) {
             ship.start();
         }
 
 
 
     }
-
 
 
 }

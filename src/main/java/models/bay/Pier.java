@@ -1,18 +1,23 @@
 package models.bay;
 
-import java.security.PublicKey;
-import java.util.concurrent.Semaphore;
-
 public class Pier {
 
-    public boolean empty;
+    private boolean empty = true;
+    private String pierId = "";
 
-
-    Pier(){
-        empty = true;
-
+    public Pier(String pierId) {
+        this.pierId = pierId;
     }
 
+    public boolean isEmpty() {
+        return empty;
+    }
 
+    public void setEmpty(boolean empty) {
+        this.empty = empty;
+    }
 
+    public String getPierId() {
+        return pierId;
+    }
 }

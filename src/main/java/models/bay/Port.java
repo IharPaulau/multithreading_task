@@ -1,21 +1,21 @@
 package models.bay;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Semaphore;
 
+import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Port {
-    public List<Pier> piers = new ArrayList<>();
-   public Storage storage = new Storage();
-
+    private Queue<Pier> piers = new ConcurrentLinkedQueue<>();
+    public Storage storage = new Storage();
 
     public Port() {
-        piers.add(new Pier());
-        piers.add(new Pier());
+        piers.add(new Pier("#1"));
+        piers.add(new Pier("#2"));
     }
 
-
-
-
+    public Queue<Pier> getPiers() {
+        return piers;
+    }
 }
