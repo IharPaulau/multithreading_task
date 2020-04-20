@@ -8,8 +8,6 @@ public enum ShipClassifier {
         this.capacity = capacity;
     }
 
-
-
     public int getCapacity() {
         return capacity;
     }

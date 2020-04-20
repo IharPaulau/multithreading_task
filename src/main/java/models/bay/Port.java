@@ -14,7 +14,6 @@ public class Port {
 
         System.out.println(String.format("this port have %d piers, and %d containers on the storage",
                 piers.size(), storage.getContainersOnTheStorage()));
-
     }
 
     public Queue<Pier> getPiers() {

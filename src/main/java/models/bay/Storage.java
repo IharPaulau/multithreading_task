@@ -2,7 +2,7 @@ package models.bay;
 
 public class Storage {
     private int maxCapacity = 100;
-    private int containersOnTheStorage = 10;
+    private int containersOnTheStorage = 90;
 
     public Storage() {
     }
