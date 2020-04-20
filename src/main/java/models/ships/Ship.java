@@ -14,7 +14,7 @@ public class Ship extends Thread {
     private Lock lock = new ReentrantLock();
     private ShipClassifier shipClassifier;
     private ShipMission shipMission;
-    private int containersOnTheBoard = 0;
+    private int containersOnTheBoard;
     private Port port;
     private Pier pier;
     private Semaphore semaphore;
@@ -29,16 +29,12 @@ public class Ship extends Thread {
     }
 
     private boolean isFullyLoaded() {
-        if (containersOnTheBoard == shipClassifier.getCapacity())
-            return true;
-        return false;
+        return containersOnTheBoard == shipClassifier.getCapacity();
     }
 
     private boolean isEmpty() {
-        if (containersOnTheBoard == 0) return true;
-        return false;
+        return containersOnTheBoard == 0;
     }
-
 
     @Override
     public void run() {
@@ -75,6 +71,7 @@ public class Ship extends Thread {
                 port.storage.loadStorage();
                 containersOnTheBoard--;
                 System.out.println(this.getName() + " unloaded one container.");
+                sleep(100);
             } else
                 waitFreeSpaceOrSailAway();
         }
@@ -89,6 +86,7 @@ public class Ship extends Thread {
                 port.storage.unloadStorage();
                 containersOnTheBoard++;
                 System.out.println(this.getName() + " loaded one container.");
+                sleep(100);
             } else
                 waitContainersOrSailAway();
         }
@@ -99,7 +97,7 @@ public class Ship extends Thread {
     private void waitContainersOrSailAway() throws InterruptedException {
         System.out.println("not enough containers " + this.getName() + " start to waiting...");
         for (int i = 0; i < 5; i++) {
-            sleep(1000);
+            sleep(500);
             if (containersAvailable()) break;
         }
         if (!containersAvailable()) {
@@ -111,7 +109,7 @@ public class Ship extends Thread {
     private void waitFreeSpaceOrSailAway() throws InterruptedException {
         System.out.println("not enough free space for containers " + this.getName() + " start to waiting...");
         for (int i = 0; i < 5; i++) {
-            sleep(1000);
+            sleep(500);
             if (freeSpaceAvailable()) break;
         }
         if (!freeSpaceAvailable()) {
@@ -121,9 +119,7 @@ public class Ship extends Thread {
     }
 
     private boolean containersAvailable() {
-        if (port.storage.getContainersOnTheStorage() == 0)
-            return false;
-        return true;
+        return port.storage.getContainersOnTheStorage() != 0;
     }
 
     private boolean freeSpaceAvailable() {
