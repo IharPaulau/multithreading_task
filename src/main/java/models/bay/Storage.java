@@ -2,17 +2,18 @@ package models.bay;
 
 public class Storage {
     private int maxCapacity = 100;
-    private int containersOnTheStorage = 10;
+    private int containersOnTheStorage;
 
-    public Storage() {
+    public Storage(int containersOnTheStorage) {
+        this.containersOnTheStorage = containersOnTheStorage;
     }
 
-    public int unloadStorage() {
-        return containersOnTheStorage--;
+    public void unloadStorage() {
+        containersOnTheStorage--;
     }
 
-    public int loadStorage() {
-        return containersOnTheStorage++;
+    public void loadStorage() {
+        containersOnTheStorage++;
     }
 
     public int getContainersOnTheStorage() {
