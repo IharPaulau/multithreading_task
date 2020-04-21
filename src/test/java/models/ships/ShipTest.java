@@ -11,19 +11,18 @@ import java.util.concurrent.Semaphore;
 import static java.lang.Thread.sleep;
 
 public class ShipTest {
-    private Port test_port;
-    private Sea test_sea;
-    private static Semaphore semaphore;
+    private Port testPort;
+    private Sea testSea = new Sea();
+    private Semaphore semaphore;
 
     @Before
     public void init() {
-        test_sea = new Sea();
         semaphore = new Semaphore(2, true);
     }
 
     @Test
     public void shouldHaveExpectedNumberContainersOnStorage_whenAllShipsSailAway() {
-        test_port = new Port(50);
+        testPort = new Port(50, 100, 2);
         fillListByTestShips();
         startTesting();
         try {
@@ -31,33 +30,38 @@ public class ShipTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Assert.assertEquals(50, test_port.storage.getContainersOnTheStorage());
+        Assert.assertEquals(50, testPort.getStorage().getContainersOnTheStorage());
     }
 
     @Test
     public void shouldContainNoMoreThanMaximumPermissibleValueOnTheStorage_whenShipsUnloading() {
-        test_port = new Port(99);
-        new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 10, test_port, semaphore).start();
+        testPort = new Port(99, 100,2);
+        Ship testShip = createNewShip(ShipMission.FOR_UNLOAD, 10);
+        testShip.start();
         try {
             sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(test_port.storage.getContainersOnTheStorage() == test_port.storage.getMaxCapacity());
+        Assert.assertEquals(testPort.getStorage().getContainersOnTheStorage(), testPort.getStorage().getMaxCapacity());
     }
 
     private void startTesting() {
-        for (Ship ship : test_sea.ships) {
+        for (Ship ship : testSea.getShips()) {
             ship.start();
         }
     }
 
     private void fillListByTestShips() {
-        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 10, test_port, semaphore));
-        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, test_port, semaphore));
-        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 10, test_port, semaphore));
-        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, test_port, semaphore));
-        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 10, test_port, semaphore));
-        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, test_port, semaphore));
+        testSea.addShips(createNewShip(ShipMission.FOR_UNLOAD, 0));
+        testSea.addShips(createNewShip(ShipMission.FOR_LOAD, 10));
+        testSea.addShips(createNewShip(ShipMission.FOR_UNLOAD, 10));
+        testSea.addShips(createNewShip(ShipMission.FOR_LOAD, 0));
+        testSea.addShips(createNewShip(ShipMission.FOR_UNLOAD, 10));
+        testSea.addShips(createNewShip(ShipMission.FOR_LOAD, 0));
+    }
+
+    private Ship createNewShip(ShipMission shipMission, int containersOnTheBoard){
+        return new Ship(ShipClassifier.MIDDLE, shipMission, containersOnTheBoard, testPort, semaphore);
     }
 }

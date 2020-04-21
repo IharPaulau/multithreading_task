@@ -1,23 +1,25 @@
 package models.bay;
 
-
-import org.apache.log4j.Logger;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Port {
-    private static final Logger LOGGER = Logger.getLogger(Port.class);
     private Queue<Pier> piers = new ConcurrentLinkedQueue<>();
-    public Storage storage;
+    private Storage storage;
 
-    public Port(int containersOnTheStorage) {
-        storage = new Storage(containersOnTheStorage);
-        piers.add(new Pier("#1"));
-        piers.add(new Pier("#2"));
+    public Port(int containersOnTheStorage, int maxCapacity, int numberOfPiers) {
+        storage = new Storage(containersOnTheStorage, maxCapacity);
+        pierMaker(numberOfPiers);
+    }
 
-        LOGGER.info(String.format("this port have %d piers, and %d containers on the storage",
-                piers.size(), storage.getContainersOnTheStorage()));
+    private void pierMaker(int amount) {
+        for (int i = 1; i < amount + 1; i++) {
+            piers.add(new Pier("#" + i));
+        }
+    }
 
+    public Storage getStorage() {
+        return storage;
     }
 
     public Queue<Pier> getPiers() {

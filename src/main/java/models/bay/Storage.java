@@ -6,10 +6,12 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Storage {
 
     private int containersOnTheStorage;
+    private int maxCapacity;
     private Lock lock = new ReentrantLock();
 
-    public Storage(int containersOnTheStorage) {
+    public Storage(int containersOnTheStorage, int maxCapacity) {
         this.containersOnTheStorage = containersOnTheStorage;
+        this.maxCapacity = maxCapacity;
     }
 
     public void unloadStorage() {
@@ -29,6 +31,6 @@ public class Storage {
     }
 
     public int getMaxCapacity() {
-        return 100;
+        return maxCapacity;
     }
 }

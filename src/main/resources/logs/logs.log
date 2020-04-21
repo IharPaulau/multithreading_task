@@ -4735,3 +4735,75 @@
 2020-04-21 15:32:26:935 WARN  Ship:waitFreeSpaceOrSailAway:114 - Not enough free space! Ship 'Thread-6' start to waiting...
 2020-04-21 15:32:29:439 ERROR Ship:waitFreeSpaceOrSailAway:120 - Time is up and  ship 'Thread-6' needs to return without waiting for the required free space for containers
 2020-04-21 15:32:29:439 INFO  Ship:sailAway:134 - Ship 'Thread-6' sail away with 9 containers, now pier '#1' is free. Containers on storage - 100
+2020-04-21 17:29:27:089 INFO  Port:<init>:17 - this port have 2 piers, and 99 containers on the storage
+2020-04-21 17:29:27:098 INFO  Ship:goToPier:53 - Ship 'Thread-0' find free pier '#1' and moored to him
+2020-04-21 17:29:27:099 INFO  Ship:unloadShip:67 - Ship 'Thread-0' starts unloading containers...
+2020-04-21 17:29:27:100 INFO  Ship:unloadShip:72 - Ship 'Thread-0' unloaded one container.
+2020-04-21 17:29:27:200 WARN  Ship:waitFreeSpaceOrSailAway:109 - Not enough free space! Ship 'Thread-0' start to waiting...
+2020-04-21 17:29:29:703 WARN  Ship:waitFreeSpaceOrSailAway:115 - Time is up and ship 'Thread-0' needs to return without waiting for the required free space for containers
+2020-04-21 17:29:29:703 INFO  Ship:sailAway:129 - Ship 'Thread-0' sail away with 9 containers, now pier '#1' is free. Containers on storage - 100
+2020-04-21 17:29:41:108 INFO  Port:<init>:17 - this port have 2 piers, and 50 containers on the storage
+2020-04-21 17:29:41:115 INFO  Ship:goToPier:53 - Ship 'Thread-0' find free pier '#1' and moored to him
+2020-04-21 17:29:41:122 INFO  Ship:unloadShip:67 - Ship 'Thread-0' starts unloading containers...
+2020-04-21 17:29:41:122 INFO  Ship:unloadShip:78 - Ship 'Thread-0' now fully unloaded.
+2020-04-21 17:29:41:123 INFO  Ship:sailAway:129 - Ship 'Thread-0' sail away with 0 containers, now pier '#1' is free. Containers on storage - 50
+2020-04-21 17:29:41:116 INFO  Ship:goToPier:53 - Ship 'Thread-3' find free pier '#2' and moored to him
+2020-04-21 17:29:41:125 INFO  Ship:loadShip:82 - Ship 'Thread-3' starts loading containers...
+2020-04-21 17:29:41:126 INFO  Ship:goToPier:53 - Ship 'Thread-1' find free pier '#1' and moored to him
+2020-04-21 17:29:41:126 INFO  Ship:loadShip:87 - Ship 'Thread-3' loaded one container.
+2020-04-21 17:29:41:126 INFO  Ship:loadShip:82 - Ship 'Thread-1' starts loading containers...
+2020-04-21 17:29:41:127 INFO  Ship:loadShip:93 - Ship 'Thread-1' now fully loaded.
+2020-04-21 17:29:41:127 INFO  Ship:sailAway:129 - Ship 'Thread-1' sail away with 10 containers, now pier '#1' is free. Containers on storage - 49
+2020-04-21 17:29:41:128 INFO  Ship:goToPier:53 - Ship 'Thread-5' find free pier '#1' and moored to him
+2020-04-21 17:29:41:128 INFO  Ship:loadShip:82 - Ship 'Thread-5' starts loading containers...
+2020-04-21 17:29:41:128 INFO  Ship:loadShip:87 - Ship 'Thread-5' loaded one container.
+2020-04-21 17:29:41:226 INFO  Ship:loadShip:87 - Ship 'Thread-3' loaded one container.
+2020-04-21 17:29:41:231 INFO  Ship:loadShip:87 - Ship 'Thread-5' loaded one container.
+2020-04-21 17:29:41:333 INFO  Ship:loadShip:87 - Ship 'Thread-3' loaded one container.
+2020-04-21 17:29:41:334 INFO  Ship:loadShip:87 - Ship 'Thread-5' loaded one container.
+2020-04-21 17:29:41:435 INFO  Ship:loadShip:87 - Ship 'Thread-3' loaded one container.
+2020-04-21 17:29:41:448 INFO  Ship:loadShip:87 - Ship 'Thread-5' loaded one container.
+2020-04-21 17:29:41:548 INFO  Ship:loadShip:87 - Ship 'Thread-3' loaded one container.
+2020-04-21 17:29:41:551 INFO  Ship:loadShip:87 - Ship 'Thread-5' loaded one container.
+2020-04-21 17:29:41:650 INFO  Ship:loadShip:87 - Ship 'Thread-3' loaded one container.
+2020-04-21 17:29:41:653 INFO  Ship:loadShip:87 - Ship 'Thread-5' loaded one container.
+2020-04-21 17:29:41:754 INFO  Ship:loadShip:87 - Ship 'Thread-5' loaded one container.
+2020-04-21 17:29:41:755 INFO  Ship:loadShip:87 - Ship 'Thread-3' loaded one container.
+2020-04-21 17:29:41:854 INFO  Ship:loadShip:87 - Ship 'Thread-5' loaded one container.
+2020-04-21 17:29:41:855 INFO  Ship:loadShip:87 - Ship 'Thread-3' loaded one container.
+2020-04-21 17:29:41:955 INFO  Ship:loadShip:87 - Ship 'Thread-5' loaded one container.
+2020-04-21 17:29:41:957 INFO  Ship:loadShip:87 - Ship 'Thread-3' loaded one container.
+2020-04-21 17:29:42:055 INFO  Ship:loadShip:87 - Ship 'Thread-5' loaded one container.
+2020-04-21 17:29:42:058 INFO  Ship:loadShip:87 - Ship 'Thread-3' loaded one container.
+2020-04-21 17:29:42:156 INFO  Ship:loadShip:93 - Ship 'Thread-5' now fully loaded.
+2020-04-21 17:29:42:156 INFO  Ship:sailAway:129 - Ship 'Thread-5' sail away with 10 containers, now pier '#1' is free. Containers on storage - 30
+2020-04-21 17:29:42:157 INFO  Ship:goToPier:53 - Ship 'Thread-4' find free pier '#1' and moored to him
+2020-04-21 17:29:42:158 INFO  Ship:unloadShip:67 - Ship 'Thread-4' starts unloading containers...
+2020-04-21 17:29:42:158 INFO  Ship:unloadShip:72 - Ship 'Thread-4' unloaded one container.
+2020-04-21 17:29:42:159 INFO  Ship:loadShip:93 - Ship 'Thread-3' now fully loaded.
+2020-04-21 17:29:42:159 INFO  Ship:sailAway:129 - Ship 'Thread-3' sail away with 10 containers, now pier '#2' is free. Containers on storage - 31
+2020-04-21 17:29:42:159 INFO  Ship:goToPier:53 - Ship 'Thread-2' find free pier '#2' and moored to him
+2020-04-21 17:29:42:160 INFO  Ship:unloadShip:67 - Ship 'Thread-2' starts unloading containers...
+2020-04-21 17:29:42:160 INFO  Ship:unloadShip:72 - Ship 'Thread-2' unloaded one container.
+2020-04-21 17:29:42:258 INFO  Ship:unloadShip:72 - Ship 'Thread-4' unloaded one container.
+2020-04-21 17:29:42:261 INFO  Ship:unloadShip:72 - Ship 'Thread-2' unloaded one container.
+2020-04-21 17:29:42:358 INFO  Ship:unloadShip:72 - Ship 'Thread-4' unloaded one container.
+2020-04-21 17:29:42:362 INFO  Ship:unloadShip:72 - Ship 'Thread-2' unloaded one container.
+2020-04-21 17:29:42:459 INFO  Ship:unloadShip:72 - Ship 'Thread-4' unloaded one container.
+2020-04-21 17:29:42:462 INFO  Ship:unloadShip:72 - Ship 'Thread-2' unloaded one container.
+2020-04-21 17:29:42:559 INFO  Ship:unloadShip:72 - Ship 'Thread-4' unloaded one container.
+2020-04-21 17:29:42:562 INFO  Ship:unloadShip:72 - Ship 'Thread-2' unloaded one container.
+2020-04-21 17:29:42:660 INFO  Ship:unloadShip:72 - Ship 'Thread-4' unloaded one container.
+2020-04-21 17:29:42:662 INFO  Ship:unloadShip:72 - Ship 'Thread-2' unloaded one container.
+2020-04-21 17:29:42:760 INFO  Ship:unloadShip:72 - Ship 'Thread-4' unloaded one container.
+2020-04-21 17:29:42:763 INFO  Ship:unloadShip:72 - Ship 'Thread-2' unloaded one container.
+2020-04-21 17:29:42:860 INFO  Ship:unloadShip:72 - Ship 'Thread-4' unloaded one container.
+2020-04-21 17:29:42:863 INFO  Ship:unloadShip:72 - Ship 'Thread-2' unloaded one container.
+2020-04-21 17:29:42:960 INFO  Ship:unloadShip:72 - Ship 'Thread-4' unloaded one container.
+2020-04-21 17:29:42:964 INFO  Ship:unloadShip:72 - Ship 'Thread-2' unloaded one container.
+2020-04-21 17:29:43:061 INFO  Ship:unloadShip:72 - Ship 'Thread-4' unloaded one container.
+2020-04-21 17:29:43:064 INFO  Ship:unloadShip:72 - Ship 'Thread-2' unloaded one container.
+2020-04-21 17:29:43:162 INFO  Ship:unloadShip:78 - Ship 'Thread-4' now fully unloaded.
+2020-04-21 17:29:43:162 INFO  Ship:sailAway:129 - Ship 'Thread-4' sail away with 0 containers, now pier '#1' is free. Containers on storage - 50
+2020-04-21 17:29:43:165 INFO  Ship:unloadShip:78 - Ship 'Thread-2' now fully unloaded.
+2020-04-21 17:29:43:165 INFO  Ship:sailAway:129 - Ship 'Thread-2' sail away with 0 containers, now pier '#2' is free. Containers on storage - 50

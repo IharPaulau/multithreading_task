@@ -6,8 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sea {
-    public List<Ship> ships = new ArrayList<>();
+    private List<Ship> ships = new ArrayList<>();
 
+    public List<Ship> getShips() {
+        return ships;
+    }
 
+    public void addShips(Ship ship) {
+        ships.add(ship);
+    }
 }
 
