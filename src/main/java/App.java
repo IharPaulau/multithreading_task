@@ -3,10 +3,12 @@ import models.bay.Port;
 import models.ships.Ship;
 import models.ships.ShipClassifier;
 import models.ships.ShipMission;
-
+import org.apache.log4j.Logger;
 import java.util.concurrent.Semaphore;
 
 public class App {
+    private static final Logger LOGGER = Logger.getLogger(Ship.class);
+
     public static void main(String[] args) {
         Port wilhelmshaven = createPort(20, 100, 2);
         Sea northSea = new Sea();
@@ -27,6 +29,8 @@ public class App {
     }
 
     private static Port createPort(int initialNumberOfContainers, int maxCapacity, int initialNumberOfPiers) {
+        LOGGER.info(String.format("Making a port with %d piers, a storage with %d containers and a maximum capacity of %d ", initialNumberOfPiers,
+                initialNumberOfContainers, maxCapacity));
         return new Port(initialNumberOfContainers, maxCapacity, initialNumberOfPiers);
     }
 }

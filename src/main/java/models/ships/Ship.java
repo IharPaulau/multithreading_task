@@ -7,7 +7,6 @@ import java.util.Queue;
 import java.util.concurrent.Semaphore;
 import static models.ships.ShipMission.*;
 
-
 public class Ship extends Thread {
     private static final Logger LOGGER = Logger.getLogger(Ship.class);
     private ShipClassifier shipClassifier;

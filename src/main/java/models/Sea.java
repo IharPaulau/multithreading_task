@@ -16,4 +16,3 @@ public class Sea {
         ships.add(ship);
     }
 }
-
