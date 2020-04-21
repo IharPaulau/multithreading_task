@@ -7,10 +7,10 @@ import org.apache.log4j.Logger;
 import java.util.concurrent.Semaphore;
 
 public class App {
-    private static final Logger LOGGER = Logger.getLogger(Ship.class);
+    private static final Logger LOGGER = Logger.getLogger(App.class);
 
     public static void main(String[] args) {
-        Port wilhelmshaven = createPort(20, 100, 2);
+        Port wilhelmshaven = createPort(0, 100, 2);
         Sea northSea = new Sea();
         Semaphore semaphore = new Semaphore(2, true);
 

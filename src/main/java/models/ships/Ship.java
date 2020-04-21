@@ -3,8 +3,10 @@ package models.ships;
 import models.bay.Pier;
 import models.bay.Port;
 import org.apache.log4j.Logger;
+
 import java.util.Queue;
 import java.util.concurrent.Semaphore;
+
 import static models.ships.ShipMission.*;
 
 public class Ship extends Thread {
@@ -39,9 +41,9 @@ public class Ship extends Thread {
         try {
             semaphore.acquire();
             goToPier(allPiers);
+            sailAway();
         } catch (InterruptedException e) {
-
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         } finally {
             semaphore.release();
         }
@@ -59,7 +61,6 @@ public class Ship extends Thread {
         } else {
             unloadShip();
         }
-        sailAway();
     }
 
     private void unloadShip() throws InterruptedException {
