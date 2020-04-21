@@ -6,15 +6,13 @@ import org.apache.log4j.Logger;
 
 import java.util.Queue;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+
 
 import static models.ships.ShipMission.*;
 
 
 public class Ship extends Thread {
     private static final Logger LOGGER = Logger.getLogger(Ship.class);
-    private Lock lock = new ReentrantLock();
     private ShipClassifier shipClassifier;
     private ShipMission shipMission;
     private int containersOnTheBoard;
@@ -60,11 +58,9 @@ public class Ship extends Thread {
     }
 
     private void checkWhatToDo() throws InterruptedException {
-                if (shipMission == FOR_LOAD) {
+        if (shipMission == FOR_LOAD) {
             loadShip();
         } else unloadShip();
-
-
         sailAway();
     }
 

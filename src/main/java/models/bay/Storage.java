@@ -5,7 +5,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Storage {
 
-    private int maxCapacity = 100;
     private int containersOnTheStorage;
     private Lock lock = new ReentrantLock();
 
@@ -30,6 +29,6 @@ public class Storage {
     }
 
     public int getMaxCapacity() {
-        return maxCapacity;
+        return 100;
     }
 }
