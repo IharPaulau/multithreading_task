@@ -60,12 +60,11 @@ public class Ship extends Thread {
     }
 
     private void checkWhatToDo() throws InterruptedException {
-        lock.lock();
-        if (shipMission == FOR_LOAD) {
+                if (shipMission == FOR_LOAD) {
             loadShip();
         } else unloadShip();
 
-        lock.unlock();
+
         sailAway();
     }
 

@@ -1,19 +1,28 @@
 package models.bay;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Storage {
+
     private int maxCapacity = 100;
     private int containersOnTheStorage;
+    private Lock lock = new ReentrantLock();
 
     public Storage(int containersOnTheStorage) {
         this.containersOnTheStorage = containersOnTheStorage;
     }
 
     public void unloadStorage() {
+        lock.lock();
         containersOnTheStorage--;
+        lock.unlock();
     }
 
     public void loadStorage() {
+        lock.lock();
         containersOnTheStorage++;
+        lock.unlock();
     }
 
     public int getContainersOnTheStorage() {

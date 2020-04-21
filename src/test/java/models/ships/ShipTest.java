@@ -1,12 +1,13 @@
 package models.ships;
 
-
 import models.Sea;
 import models.bay.Port;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.concurrent.Semaphore;
+
 import static java.lang.Thread.sleep;
 
 public class ShipTest {
@@ -22,24 +23,23 @@ public class ShipTest {
 
     @Test
     public void shouldHaveExpectedNumberContainersOnStorage_whenAllShipsSailAway() {
-        test_port = new Port(20);
+        test_port = new Port(50);
         fillListByTestShips();
         startTesting();
         try {
-            sleep(4000);
+            sleep(7000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Assert.assertEquals(30, test_port.storage.getContainersOnTheStorage());
+        Assert.assertEquals(50, test_port.storage.getContainersOnTheStorage());
     }
 
     @Test
     public void shouldContainNoMoreThanMaximumPermissibleValueOnTheStorage_whenShipsUnloading() {
         test_port = new Port(99);
-        fillListByTestShips();
-        startTesting();
+        new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 10, test_port, semaphore).start();
         try {
-            sleep(4000);
+            sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -53,7 +53,11 @@ public class ShipTest {
     }
 
     private void fillListByTestShips() {
+        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 10, test_port, semaphore));
         test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, test_port, semaphore));
-        test_sea.ships.add(new Ship(ShipClassifier.LARGE, ShipMission.FOR_UNLOAD, 20, test_port, semaphore));
+        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 10, test_port, semaphore));
+        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, test_port, semaphore));
+        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_UNLOAD, 10, test_port, semaphore));
+        test_sea.ships.add(new Ship(ShipClassifier.MIDDLE, ShipMission.FOR_LOAD, 0, test_port, semaphore));
     }
 }
